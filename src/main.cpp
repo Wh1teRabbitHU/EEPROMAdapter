@@ -9,7 +9,7 @@ void setup() {
 
 	adapter.init();
 
-	delay(5000);
+	delay(100);
 
 	Serial.println("Starting to write");
 
@@ -21,8 +21,4 @@ void setup() {
 		Serial.print("Value at address " + (String)i + ": ");
 		Serial.println(adapter.readChip(i));
 	}
-}
-
-void loop() {
-	// put your main code here, to run repeatedly:
 }
