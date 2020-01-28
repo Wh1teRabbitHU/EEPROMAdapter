@@ -3,50 +3,50 @@
 /*
 	Arduino Mega 2560 Pinout
 
-	49 RDY		VCC
-	47 A12  	46 WE
-	45 A7 	 	44 NC
-	43 A6 		42 A8
-	41 A5 		40 A9
-	39 A4 		38 A11
-	37 A3 		36 OE
-	35 A2 		34 A10
-	33 A1 		32 CE
-	31 A0 		30 IO7
-	29 IO0 		28 IO6
-	27 IO1 		26 IO5
-	25 IO2		24 IO4
-	GND			22 IO3
+	23 RDY		VCC
+	25 A12  	24 WE
+	27 A7 	 	26 NC
+	29 A6 		28 A8
+	31 A5 		30 A9
+	33 A4 		32 A11
+	35 A3 		34 OE
+	37 A2 		36 A10
+	39 A1 		38 CE
+	41 A0 		40 IO7
+	43 IO0 		42 IO6
+	45 IO1 		44 IO5
+	47 IO2		46 IO4
+	GND			48 IO3
 */
 
-#define ROM_A0  31
-#define ROM_A1  33
-#define ROM_A2  35
-#define ROM_A3  37
-#define ROM_A4  39
-#define ROM_A5  41
-#define ROM_A6  43
-#define ROM_A7  45
-#define ROM_A8  42
-#define ROM_A9  40
-#define ROM_A10 34
-#define ROM_A11 38
-#define ROM_A12 47
+#define ROM_A0  41
+#define ROM_A1  39
+#define ROM_A2  37
+#define ROM_A3  35
+#define ROM_A4  33
+#define ROM_A5  31
+#define ROM_A6  29
+#define ROM_A7  27
+#define ROM_A8  28
+#define ROM_A9  30
+#define ROM_A10 36
+#define ROM_A11 32
+#define ROM_A12 25
 
-#define ROM_IO0 29
-#define ROM_IO1 27
-#define ROM_IO2 25
-#define ROM_IO3 22
-#define ROM_IO4 24
-#define ROM_IO5 26
-#define ROM_IO6 28
-#define ROM_IO7 30
+#define ROM_IO0 43
+#define ROM_IO1 45
+#define ROM_IO2 47
+#define ROM_IO3 48
+#define ROM_IO4 46
+#define ROM_IO5 44
+#define ROM_IO6 42
+#define ROM_IO7 40
 
-#define ROM_CE  32
-#define ROM_OE  36
-#define ROM_WE  46
-#define ROM_RDY 49
-#define ROM_NC  44
+#define ROM_CE  38
+#define ROM_OE  34
+#define ROM_WE  24
+#define ROM_RDY 23
+#define ROM_NC  26
 
 #define READ_DELAY 1000
 #define WRITE_DELAY 1000
@@ -173,15 +173,6 @@ void setup() {
 
 	Serial.println("Starting to write");
 
-	writeChip(0x0, 0b01010101);
-	writeChip(0x1, 0b10101010);
-
-	Serial.print("Value at address 0x0: ");
-	Serial.println(readChip(0x0), HEX);
-	Serial.print("Value at address 0x1: ");
-	Serial.println(readChip(0x1), HEX);
-
-/*
 	for (int i = 0; i <= 0b1111111111; i++) {
 		writeChip(i, 0b00000000);
 	}
@@ -190,21 +181,6 @@ void setup() {
 		Serial.print("Value at address " + (String)i + ": ");
 		Serial.println(readChip(i));
 	}
-
-	writeChip(0x0, 0b10000000);
-	writeChip(0x1, 0b10000001);
-	writeChip(0x2, 0b10000010);
-	writeChip(0x3, 0b10000011);
-
-	Serial.print("Value at address 0x0: ");
-	Serial.println(readChip(0x0));
-	Serial.print("Value at address 0x1: ");
-	Serial.println(readChip(0x1));
-	Serial.print("Value at address 0x2: ");
-	Serial.println(readChip(0x2));
-	Serial.print("Value at address 0x3: ");
-	Serial.println(readChip(0x3));
-	*/
 }
 
 void loop() {
