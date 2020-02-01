@@ -14,25 +14,29 @@ namespace EEPROM {
         eepromAdapter = &adapter;
     }
 
-    Serial::~Serial() {
-
-    }
+    Serial::~Serial() {}
 
     void Serial::checkAndExecute() {
         if (!serialIn->available()) {
             return;
         }
 
-        flag = serialIn->read();
-        address = readNumber(4);
-        value = readNumber(2);
+        char flag = serialIn->read();
 
-        serialOut->println("Received data: ");
-        serialOut->print(flag);
-        serialOut->print(": ");
-        serialOut->print(address);
-        serialOut->print("=");
-        serialOut->println(value);
+        switch (tolower(flag)) {
+            case READ_FLAG:
+                readMemory(readNumber(ADDRESS_LENGTH));
+
+                break;
+            case WRITE_FLAG:
+                writeMemory(readNumber(ADDRESS_LENGTH), readNumber(VALUE_LENGTH));
+
+                break;
+            default:
+                serialOut->println("Unknown flag: " + flag);
+
+                break;
+        }
     }
 
     uint16_t Serial::readNumber(int size) {
@@ -45,6 +49,24 @@ namespace EEPROM {
         }
 
         return number;
+    }
+
+    void Serial::readMemory(uint16_t address) {
+        uint8_t value = eepromAdapter->readChip(address);
+
+        serialOut->println("Read data from memory: ");
+        serialOut->print(address);
+        serialOut->print("=");
+        serialOut->println(value);
+    }
+
+    void Serial::writeMemory(uint16_t address, uint8_t value) {
+        serialOut->println("Write data to memory: ");
+        serialOut->print(address);
+        serialOut->print("=");
+        serialOut->println(value);
+
+        eepromAdapter->writeChip(address, value);
     }
 
 }

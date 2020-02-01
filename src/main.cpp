@@ -13,18 +13,7 @@ void setup() {
 
 	delay(100);
 
-	Serial.println("Waiting for data...");
-
-	/**
-	for (int i = 0; i <= 0b1111111111; i++) {
-		adapter.writeChip(i, 0b00000001);
-	}
-
-	for (int i = 0; i <= 0b1111111111; i++) {
-		Serial.print("Value at address " + (String)i + ": ");
-		Serial.println(adapter.readChip(i));
-	}
-	**/
+	Serial.println("Waiting for instructions...");
 }
 
 void loop() {

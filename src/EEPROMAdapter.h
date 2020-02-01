@@ -67,14 +67,6 @@
                 uint8_t readChip(uint16_t address);
                 void writeChip(uint16_t address, uint8_t data);
 
-                void readEnable(void);
-                void writeEnable(void);
-                void standby(void);
-                uint8_t getBit(uint8_t byteValue, int position);
-                uint8_t updateBit(uint8_t byteValue, uint8_t position, uint8_t binaryValue);
-                void changeIO(uint8_t direction);
-                void setAddress(uint16_t address);
-
             private:
                 uint8_t addressPins[13] = {
                     ROM_A0,
@@ -102,6 +94,14 @@
                     ROM_IO6,
                     ROM_IO7
                 };
+
+                void readEnable(void);
+                void writeEnable(void);
+                void standby(void);
+                uint8_t getBit(uint8_t byteValue, int position);
+                uint8_t updateBit(uint8_t byteValue, uint8_t position, uint8_t binaryValue);
+                void changeIO(uint8_t direction);
+                void setAddress(uint16_t address);
         };
     }
 

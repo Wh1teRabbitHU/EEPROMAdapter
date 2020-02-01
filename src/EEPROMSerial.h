@@ -6,6 +6,12 @@
 
     namespace EEPROM {
 
+        #define READ_FLAG 'r'
+        #define WRITE_FLAG 'w'
+
+        #define ADDRESS_LENGTH 4
+        #define VALUE_LENGTH 2
+
         class Serial {
             public:
                 // Constructor/destructor
@@ -15,16 +21,15 @@
 
                 // Methods
                 void checkAndExecute(void);
-                uint16_t readNumber(int size);
-
+                
             private:
                 Stream* serialIn;
 		        Stream* serialOut;
                 EEPROM::Adapter* eepromAdapter;
 
-                char flag;
-                uint16_t address; 
-                uint8_t value;
+                uint16_t readNumber(int size);
+                void readMemory(uint16_t address);
+                void writeMemory(uint16_t address, uint8_t value);
         };
     }
 
