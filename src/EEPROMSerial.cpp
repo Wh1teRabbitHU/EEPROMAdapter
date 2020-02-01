@@ -22,14 +22,21 @@ namespace EEPROM {
         }
 
         char flag = serialIn->read();
+        uint16_t address;
+        uint8_t value;
 
         switch (tolower(flag)) {
             case READ_FLAG:
-                readMemory(readNumber(ADDRESS_LENGTH));
+                address = readNumber(ADDRESS_LENGTH);
+
+                readMemory(address);
 
                 break;
             case WRITE_FLAG:
-                writeMemory(readNumber(ADDRESS_LENGTH), readNumber(VALUE_LENGTH));
+                address = readNumber(ADDRESS_LENGTH);
+                value = readNumber(VALUE_LENGTH);
+
+                writeMemory(address, value);
 
                 break;
             default:
