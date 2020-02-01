@@ -1,6 +1,6 @@
 # EEPROMAdapter
 
-This adapter can read and write AT28C64 and AT28C256 EEPROM chips. Creating converter PCB for this task recommended
+This adapter can read and write AT28C64 and AT28C256 EEPROM chips using Arudino Mega. Creating converter PCB for this task recommended
 
 ## Table of content
 
