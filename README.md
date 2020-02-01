@@ -6,7 +6,7 @@ This adapter can read and write AT28C64 and AT28C256 EEPROM chips. Creating conv
 
 - [EEPROMAdapter](#eepromadapter)
   - [Table of content](#table-of-content)
-  - [How to connect](#how-to-connect)
+  - [How to connect your arduino](#how-to-connect-your-arduino)
     - [PIN layout](#pin-layout)
     - [Example](#example)
   - [Usage](#usage)
@@ -19,42 +19,9 @@ This adapter can read and write AT28C64 and AT28C256 EEPROM chips. Creating conv
       - [Constructor:](#constructor-1)
       - [void checkAndExecute():](#void-checkandexecute)
 
-## How to connect
+## How to connect your arduino
 
-This library is made for the arduino mega microcontroller, because thats the most common and cheap solution, however you can override it any time using the following constants: (you need to define the CUSTOM_PINS constant before)
-
-```c
-    #define CUSTOM_PINS true
-
-    #define ROM_A0  41
-    #define ROM_A1  39
-    #define ROM_A2  37
-    #define ROM_A3  35
-    #define ROM_A4  33
-    #define ROM_A5  31
-    #define ROM_A6  29
-    #define ROM_A7  27
-    #define ROM_A8  28
-    #define ROM_A9  30
-    #define ROM_A10 36
-    #define ROM_A11 32
-    #define ROM_A12 25
-
-    #define ROM_IO0 43
-    #define ROM_IO1 45
-    #define ROM_IO2 47
-    #define ROM_IO3 48
-    #define ROM_IO4 46
-    #define ROM_IO5 44
-    #define ROM_IO6 42
-    #define ROM_IO7 40
-
-    #define ROM_CE  38
-    #define ROM_OE  34
-    #define ROM_WE  24
-    #define ROM_RDY 23
-    #define ROM_NC  26
-```
+This library is made for the arduino mega microcontroller, because thats the most common and cheap solution. For other device there is no remapping option, yet.
 
 ### PIN layout
 
