@@ -9,8 +9,8 @@
         #define READ_FLAG 'r'
         #define WRITE_FLAG 'w'
 
-        #define ADDRESS_LENGTH 4
-        #define VALUE_LENGTH 2
+        #define ADDRESS_LENGTH 5
+        #define VALUE_LENGTH 3
 
         class Serial {
             public:
