@@ -50,7 +50,7 @@ Default arduino mega pin layout
 
 ### PCB
 
-You can order a working PCB using the generated gerber [file](./files/Gerber_PCB.zip) or do it yourself at home using [this](./files/SingleSide_PCB.svg) one sided svg image
+You can order a working PCB using the generated gerber [file](./files/Gerber_PCB.zip) or do it yourself at home using [this](./files/Single_Side_PCB.svg) one sided svg image
 
 ## Usage
 
