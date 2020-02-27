@@ -31,28 +31,26 @@ Default arduino mega pin layout
  /*
     Arduino Mega 2560 Pin layout
 
-    23 RDY		VCC
-    25 A12  	24 WE
-    27 A7 	 	26 NC
-    29 A6 		28 A8
-    31 A5 		30 A9
-    33 A4 		32 A11
-    35 A3 		34 OE
-    37 A2 		36 A10
-    39 A1 		38 CE
-    41 A0 		40 IO7
-    43 IO0 		42 IO6
-    45 IO1 		44 IO5
-    47 IO2		46 IO4
-    GND			48 IO3
+    22 RDY		VCC
+    24 A12  	23 WE
+    26 A7 	 	25 NC
+    28 A6 		27 A8
+    30 A5 		29 A9
+    32 A4 		31 A11
+    34 A3 		33 OE
+    36 A2 		35 A10
+    38 A1 		37 CE
+    40 A0 		39 IO7
+    42 IO0 		41 IO6
+    44 IO1 		43 IO5
+    46 IO2		45 IO4
+    GND			  47 IO3
 */
 ```
 
-### Example
+### PCB
 
-The following picture shows a working connection with an arduino mega microcontroller:
-
-![ATMega_connection](./files/atmega_connection.jpg)
+You can order a working PCB using the generated gerber [file](./files/Gerber_PCB.zip) or do it yourself at home using [this](./files/SingleSide_PCB.svg) one sided svg image
 
 ## Usage
 
@@ -91,6 +89,6 @@ You can provide a Serial input, output stream and an adapter instance. If the in
 It starts to listen to the provided stream output and when data is comming, it parse and executes the commands. The following commands are available:
 
 - Read: You can read a memory address with this command. Syntax: rAAAAA, where r is the read flag and AAAAA is the address. Example: r00000 will read the first memory address.
-- Write: You can write to the given memory address with this method. Syntax: wAAAAADDD, where w is the read flag and AAAAA is the address, DDD is the value. Example: w00000128 will write all ones to the first memory address.
+- Write: You can write to the given memory address with this method. Syntax: wAAAAADDD, where w is the read flag and AAAAA is the address, DDD is the value. Example: w00000255 will write all ones to the first memory address.
 
-The maximum address is depends on the EEPROM-s capacity, the value's limit is 127. (because these chips are storing data on 8 bit) All the numbers are decimals and the adapter will convert them into binary values. Flags are case insensitive. (r/R or w/W)
+The maximum address is depends on the EEPROM-s capacity, the value's limit is 255. (because these chips are storing data on 8 bit) All the numbers are decimals and the adapter will convert them into binary values. Flags are case insensitive. (r/R or w/W)
