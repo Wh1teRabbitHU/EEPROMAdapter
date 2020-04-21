@@ -8,7 +8,9 @@ This adapter can read and write AT28C64 and AT28C256 EEPROM chips using Arudino 
   - [Table of content](#table-of-content)
   - [How to connect your arduino](#how-to-connect-your-arduino)
     - [PIN layout](#pin-layout)
-    - [Example](#example)
+    - [PCB](#pcb)
+      - [Manufactured PCBs](#manufactured-pcbs)
+      - [Assembled Adapter](#assembled-adapter)
   - [Usage](#usage)
     - [EEPROMAdapter](#eepromadapter-1)
       - [Constructor:](#constructor)
@@ -50,7 +52,15 @@ Default arduino mega pin layout
 
 ### PCB
 
-You can order a working PCB using the generated gerber [file](./files/Gerber_PCB.zip) or do it yourself at home using [this](./files/Single_Side_PCB.svg) one sided svg image
+You can order a working PCB using the generated gerber [file](./files/Gerber_PCB.zip) or do it yourself at home using [this](./files/Single_Side_PCB.svg) one sided svg image.
+
+#### Manufactured PCBs
+
+![manufactured_pcbs](./files/Manufactured_PCBs.jpg)
+
+#### Assembled Adapter
+
+![assembled_adapter](./files/Assembled_Adapter.jpg)
 
 ## Usage
 
@@ -89,6 +99,6 @@ You can provide a Serial input, output stream and an adapter instance. If the in
 It starts to listen to the provided stream output and when data is comming, it parse and executes the commands. The following commands are available:
 
 - Read: You can read a memory address with this command. Syntax: rAAAAA, where r is the read flag and AAAAA is the address. Example: r00000 will read the first memory address.
-- Write: You can write to the given memory address with this method. Syntax: wAAAAADDD, where w is the read flag and AAAAA is the address, DDD is the value. Example: w00000255 will write all ones to the first memory address.
+- Write: You can write to the given memory address with this method. Syntax: wAAAAADDD, where w is the write flag and AAAAA is the address, DDD is the value. Example: w00000255 will write all ones to the first memory address.
 
 The maximum address is depends on the EEPROM-s capacity, the value's limit is 255. (because these chips are storing data on 8 bit) All the numbers are decimals and the adapter will convert them into binary values. Flags are case insensitive. (r/R or w/W)
