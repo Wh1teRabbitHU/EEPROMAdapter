@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 #include <EEPROMAdapter.h>
 
 EEPROM::Adapter adapter = EEPROM::Adapter();

@@ -19,6 +19,8 @@ namespace EEPROM {
         pinMode(ROM_NC, OUTPUT);
         pinMode(ROM_RDY, INPUT);
 
+        pinMode(IND_LED, OUTPUT);
+
         for (uint8_t i = 0; i < sizeof(addressPins) / sizeof(uint8_t); i++) {
             pinMode(addressPins[i], OUTPUT);
         }
@@ -27,6 +29,8 @@ namespace EEPROM {
     }
 
     uint8_t Adapter::readChip(uint16_t address) {
+        digitalWrite(IND_LED, HIGH);
+        
         changeIO(INPUT);
         setAddress(address);
         readEnable();
@@ -39,10 +43,14 @@ namespace EEPROM {
 
         standby();
 
+        digitalWrite(IND_LED, LOW);
+
         return value;
     }
 
     void Adapter::writeChip(uint16_t address, uint8_t data) {
+        digitalWrite(IND_LED, HIGH);
+
         setAddress(address);
 
         for (uint8_t i = 0; i < sizeof(ioPins) / sizeof(uint8_t); i++) {
@@ -53,6 +61,8 @@ namespace EEPROM {
         writeEnable();
 
         standby();
+
+        digitalWrite(IND_LED, LOW);
     }
 
     void Adapter::readEnable() {

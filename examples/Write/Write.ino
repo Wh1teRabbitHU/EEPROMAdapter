@@ -1,5 +1,3 @@
-#include <Arduino.h>
-
 #include <EEPROMAdapter.h>
 
 EEPROM::Adapter adapter = EEPROM::Adapter();
@@ -13,10 +11,16 @@ void setup() {
 }
 
 void loop() {
-	Serial.println("Starting to read data from the EEPROM!");
+	Serial.println("Starting to write data to the EEPROM!");
+
+	uint8_t value = 0;
 
 	for (uint16_t index = 0; index < 4096; index++) {
-		uint8_t value = adapter.readChip(index);
+		if (++value > 255) {
+			value = 0;
+		}
+
+		adapter.writeChip(index, value);
 
 		Serial.print("Address: ");
 		Serial.print(index);
@@ -24,7 +28,7 @@ void loop() {
 		Serial.println(value);
 	}
 
-	Serial.println("Finished reading from the EEPROM!");
+	Serial.println("Finished writing to the EEPROM!");
 
 	delay(10000);
 }
