@@ -56,6 +56,8 @@
         #define READ_DELAY 1000
         #define WRITE_DELAY 1000
 
+        #define IND_LED 53
+
         class Adapter {
             public:
                 // Constructor/destructor
