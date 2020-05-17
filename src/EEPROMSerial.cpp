@@ -61,14 +61,14 @@ namespace EEPROM {
     void Serial::readMemory(uint16_t address) {
         uint8_t value = eepromAdapter->readChip(address);
 
-        serialOut->println("Read data from memory: ");
+        // Read data from memory
         serialOut->print(address);
         serialOut->print("=");
         serialOut->println(value);
     }
 
     void Serial::writeMemory(uint16_t address, uint8_t value) {
-        serialOut->println("Write data to memory: ");
+        // Write data to memory
         serialOut->print(address);
         serialOut->print("=");
         serialOut->println(value);
