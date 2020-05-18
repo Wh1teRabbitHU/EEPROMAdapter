@@ -10,12 +10,10 @@ void setup() {
 	adapter.init();
 
 	delay(100);
-
-	Serial.println("Waiting for instructions...");
 }
 
 void loop() {
 	serial.checkAndExecute();
 
-	delay(5);
+	delay(1);
 }
